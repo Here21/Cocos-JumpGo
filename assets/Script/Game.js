@@ -39,7 +39,6 @@ cc.Class({
 
         // touch 开始
         this.node.on(cc.Node.EventType.TOUCH_START, function (event) {
-            console.log('Touch Moved: ' + event.getLocationX());
             console.log('Mouse start' + this.bgSprite1.getContentSize());
             hero.node.runAction(hero.initialAction());
         }, this);
@@ -50,7 +49,6 @@ cc.Class({
             if (self.player.getPositionY() > 0) {
                 // 背景需要移动的高度
                 var height = self.player.getPositionY();
-                console.log("game.js height:" + height);
                 // 设置精灵移动的高度
                 self.player.setPositionY(height / 2);
                 
