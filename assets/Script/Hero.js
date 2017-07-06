@@ -17,7 +17,7 @@ cc.Class({
 
     // 下落
     setDropAction: function () {
-        var drop = cc.moveBy(this.jumpDuration, cc.p(0, -this.jumpHeight));
+        var drop = cc.moveBy(this.jumpDuration, cc.p(0, -this.dropSpeed));
         return drop;
     },
 
@@ -31,7 +31,7 @@ cc.Class({
     },
 
     heroDrop: function () {
-        var heroDrop = cc.moveBy(0.8, cc.p(0, -5));
+        var heroDrop = cc.moveBy(0.8, cc.p(0, -1));
         return heroDrop;
     },
     
