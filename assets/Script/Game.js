@@ -40,7 +40,7 @@ cc.Class({
         // touch 开始
         this.node.on(cc.Node.EventType.TOUCH_START, function (event) {
             console.log('Touch Moved: ' + event.getLocationX());
-            console.log('Mouse start');
+            console.log('Mouse start' + this.bgSprite1.getContentSize());
             hero.node.runAction(hero.initialAction());
         }, this);
         // touch结束
@@ -60,6 +60,17 @@ cc.Class({
         }, this);
     },
 
+    bgScrollAction: function () {
+        // 要先通过背景的锚点，与素材的高度去判断位置与拼接的位置
+        if (this.bgSprite1.getPositionY() < -400) {
+            this.bgSprite2.setPositionY(this.bgSprite1.getPositionY() + this.bgSprite1.getContentSize().height / 2)
+        }
+
+        if (this.bgSprite2.getPositionY() < -400) {
+            this.bgSprite1.setPositionY(this.bgSprite2.getPositionY() + this.bgSprite2.getContentSize().height / 2)
+        }
+    },
+
     // use this for initialization
     onLoad: function () {
         this.setEventControl();
@@ -67,7 +78,7 @@ cc.Class({
     },
 
     // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
+    update: function (dt) {
+        this.bgScrollAction();
+    },
 });
