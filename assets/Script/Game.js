@@ -39,7 +39,6 @@ cc.Class({
 
         // touch 开始
         this.node.on(cc.Node.EventType.TOUCH_START, function (event) {
-            console.log('Mouse start' + this.bgSprite1.getContentSize());
             hero.node.runAction(hero.initialAction());
         }, this);
         // touch结束
@@ -60,12 +59,14 @@ cc.Class({
 
     bgScrollAction: function () {
         // 要先通过背景的锚点，与素材的高度去判断位置与拼接的位置
-        if (this.bgSprite1.getPositionY() < -400) {
-            this.bgSprite2.setPositionY(this.bgSprite1.getPositionY() + this.bgSprite1.getContentSize().height / 2)
+        console.log("bg1 position :"+this.bgSprite1.getPositionY());
+        if (this.bgSprite1.getPositionY() < -350) {
+            // 1600是两个背景的锚点之间的距离
+            this.bgSprite2.setPositionY(1600 + this.bgSprite1.getPositionY())
         }
-
-        if (this.bgSprite2.getPositionY() < -400) {
-            this.bgSprite1.setPositionY(this.bgSprite2.getPositionY() + this.bgSprite2.getContentSize().height / 2)
+        console.log("bg2 position :"+this.bgSprite2.getPositionY());
+        if (this.bgSprite2.getPositionY() < -350) {
+            this.bgSprite1.setPositionY(1600 + this.bgSprite2.getPositionY())
         }
     },
 
